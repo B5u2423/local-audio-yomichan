@@ -200,7 +200,8 @@ class LocalAudioHandler(http.server.SimpleHTTPRequestHandler):
                     name = audio_source.data.display % row[DISPLAY]
                 else:
                     name = audio_source.data.display
-                url = audio_source.construct_file_url(file, self.server.server_port)
+                server_port = self.server.server_address[1]
+                url = audio_source.construct_file_url(file, server_port)
                 entry = {"name": name, "url": url}
                 audio_sources_json_list.append(entry)
 
